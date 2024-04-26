@@ -1,11 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
-
 import { api } from "~/utils/api";
+
+
 
 export default function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
 
+  const latestPosts = api.post.updateName.useMutation()
+
+  const handle = async ( )=>{
+    let response = await latestPosts.mutateAsync({newName:"saim"})
+    
+  }
+  
   return (
     <>
       <Head>
